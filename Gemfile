@@ -3,17 +3,19 @@ gemspec
 
 gem 'bundler', ['>= 1.3.0']
 
+gem 'protected_attributes'
+
 gem 'dalli'
 gem "bcrypt-ruby", :require => "bcrypt"
 
-gem 'delayed_job_active_record'
+gem 'delayed_job_active_record', '~> 4.0.0'
 gem 'daemons'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'kaminari'
-gem 'will_filter', '~> 3.1.11'
+gem 'will_filter', github: "berk/will_filter"
 
 group :development, :test do
   gem 'rspec'
@@ -27,9 +29,9 @@ group :development, :test do
 end
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier',     '>= 1.0.3'
+  gem 'sass-rails',   '4.0.1'
+  gem 'coffee-rails'
+  gem 'uglifier'
 end
 
 #gem 'rack-mini-profiler'

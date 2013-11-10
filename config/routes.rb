@@ -23,53 +23,53 @@
 
 Tr8n::Engine.routes.draw do
   [:dashboard, :awards, :forum, :glossary, :phrases, :sitemap, :translations, :translators, :wizards, :settings, :languages, :emails, :components].each do |ctrl|
-    match "app/#{ctrl}(/:action)", :controller => "app/#{ctrl}"
+    match "app/#{ctrl}(/:action)", :controller => "app/#{ctrl}", via: [:get, :post]
   end
 
   [:dashboard, :censorship, :context_rules, :cases, :settings].each do |ctrl|
-    match "language/#{ctrl}(/:action)", :controller => "language/#{ctrl}"
+    match "language/#{ctrl}(/:action)", :controller => "language/#{ctrl}", via: [:get, :post]
   end
 
   [:dashboard, :assignments, :following, :registration, :notifications, :settings, :translations].each do |ctrl|
-    match "translator/#{ctrl}(/:action)", :controller => "translator/#{ctrl}"
+    match "translator/#{ctrl}(/:action)", :controller => "translator/#{ctrl}", via: [:get, :post]
   end
 
   [:applications, :components, :sources, :chart, :clientsdk, :forum, :glossary, :language, :translation,
    :translation_key, :translator, :domain, :metrics].each do |ctrl|
-    match "admin/#{ctrl}(/:action)", :controller => "admin/#{ctrl}"
+    match "admin/#{ctrl}(/:action)", :controller => "admin/#{ctrl}", via: [:get, :post]
   end
   
   [:application, :language, :source, :component, :settings, :translation_key, :translation, :dashboard, :proxy, :oauth, :email].each do |ctrl|
-    match "api/#{ctrl}(/:action)", :controller => "api/#{ctrl}"
+    match "api/#{ctrl}(/:action)", :controller => "api/#{ctrl}", via: [:get, :post]
   end
 
   [:translator, :language_selector, :language_case_manager, :utils].each do |ctrl|
-    match "tools/#{ctrl}(/:action)", :controller => "tools/#{ctrl}"
+    match "tools/#{ctrl}(/:action)", :controller => "tools/#{ctrl}", via: [:get, :post]
   end
 
   [:help, :home].each do |ctrl|
-    match "#{ctrl}(/:action)", :controller => "#{ctrl}"
+    match "#{ctrl}(/:action)", :controller => "#{ctrl}", via: [:get, :post]
   end
 
-  match "app/emails/images/:id.gif", :controller => "app/emails", :action => "track"
+  match "app/emails/images/:id.gif", :controller => "app/emails", :action => "track", via: [:get, :post]
 
-  match "api/settings/translate.js", :controller => "api/settings", :action => "translate"
+  match "api/settings/translate.js", :controller => "api/settings", :action => "translate", via: [:get, :post]
 
-  match "requests(/:action)(/:id)", :controller => "requests", :action => "index"
+  match "requests(/:action)(/:id)", :controller => "requests", :action => "index", via: [:get, :post]
 
   namespace :tr8n do
-    root :to => "app/dashboard#index"
+    root :to => "app/dashboard#index", via: [:get, :post]
     namespace :app do
-      root :to => "app/dashboard#index"
+      root :to => "app/dashboard#index", via: [:get, :post]
     end
     namespace :translator do
-      root :to => "translator/dashboard#index"
+      root :to => "translator/dashboard#index", via: [:get, :post]
     end
     namespace :language do
-      root :to => "language/dashboard#index"
+      root :to => "language/dashboard#index", via: [:get, :post]
     end
     namespace :admin do
-      root :to => "admin/applications#index"
+      root :to => "admin/applications#index", via: [:get, :post]
     end
   end
   
